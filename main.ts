@@ -2,6 +2,9 @@ namespace SpriteKind {
     export const Cutscene = SpriteKind.create()
     export const Weapon = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Weapon, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+})
 tiles.setCurrentTilemap(tilemap`level1`)
 let mySprite = sprites.create(assets.image`myImage`, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite)
@@ -22,3 +25,4 @@ animation.animationPresets(animation.bobbing),
 true
 )
 controller.moveSprite(mySprite)
+animation.stopAnimation(animation.AnimationTypes.All, mySprite2)
